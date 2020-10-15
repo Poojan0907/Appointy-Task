@@ -37,10 +37,8 @@ function handleTouchMove(evt) {
     } else {
         if ( yDiff > 0 ) {
             /* up swipe */ 
-            window.location.href='Article1.html';
         } else { 
             /* down swipe */
-            window.location.href='Article2.html';
         }                                                                 
     }
     /* reset values */
