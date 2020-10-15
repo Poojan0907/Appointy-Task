@@ -1,0 +1,121 @@
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+header .discover-link{
+    width:15%;
+    height: 100%;
+}
+header .discover-link a{
+    display: flex;
+    font-size: 4vw;
+    color: #eb1f1ff6;
+}
+header .discover-link a:hover{
+    text-decoration: none;
+}
+header .left-arrow{
+    color: #2ed4cc;
+    max-width: 10px;
+    margin-left: 5px;
+    margin-top: 1vh;
+    text-align: start;
+    transform: scale(2, 1.5);
+}
+header .discover{
+    margin-left: 2vw;
+    margin-top: 1.3vh;
+    text-align: center;
+    color: #8c9998;
+    text-align: start;
+}
+header .myfeed{
+    text-align: center;
+    width: 70%;
+    font-size:6vw;
+    color: #5b6363;
+    height: 100%;
+}
+header .arrow-bar{
+    width: 15%;
+    align-content: center;
+}
+header .arrow-bar a:before{
+    content: '\2912';
+    margin-right: 15px;
+    margin-top: 5px;
+    float: right;
+    font-size: 5vw;
+    transform: scale(2.5, 1.2);
+    color: #2ed4cc;
+}
+
+header .myfeed hr{
+    background-color: #2ed4cc;
+    margin-top: 0px;
+    text-align: center;
+    width: 15%;
+    height: 2px;
+    align-content: flex-start;
+    border-radius: 500px;
+}
+body{
+    position: relative;
+  min-height: 100vh;
+}
+body img{
+    width: 100%;
+    height: auto;
+}
+body h1{
+    margin-left: 20px;
+    font-size: 7.5vw;
+    color: #333131dc;
+}
+body .description{
+    margin-left: 20px;
+    color: #535050dc;
+    line-height: 150%;
+    font-size: 4vw;
+    padding-bottom: 10vh;
+}
+body small{
+    color: #b8b3b3;
+}
+footer{
+    display: flex;
+    border-top: 1.5px solid rgb(214, 209, 218);
+    border-bottom: 1.5px solid rgb(214, 209, 218);
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    bottom: 0;
+}
+footer .relevance{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    width: 33%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+footer .circle{
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    background: rgb(33, 236, 77);
+}
+footer .text{
+    text-align: center;
+    color:  #535050dc;
+    font-size: 3.5vw;
+}
+footer .bookmark a:visited{
+    
+}
+
