@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!-- React -->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<html>
+
+<head>
+    <title>
+        My Feed
+    </title>
+    <!-- Internal Style -->
+    <style>
+        header {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        header .discover-link {
+            width: 15%;
+            height: 100%;
+
+        }
+
+        header .discover-link a {
+            display: flex;
+            font-size: 4vw;
+            color: #eb1f1ff6;
+        }
+
+        header .discover-link a:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        header .left-arrow {
+            color: #2ed4cc;
+            max-width: 10px;
+            margin-left: 5px;
+            margin-top: 1vh;
+            text-align: start;
+            transform: scale(2, 1.5);
+        }
+
+        header .discover {
+            margin-left: 2vw;
+            margin-top: 1.3vh;
+            text-align: center;
+            color: #8c9998;
+            text-align: start;
+        }
+
+        header .myfeed {
+            text-align: center;
+            width: 70%;
+            font-size: 6vw;
+            color: #5b6363;
+            height: 100%;
+        }
+
+        header .arrow-bar {
+            width: 15%;
+            align-content: center;
+        }
+
+        header .arrow-bar a:before {
+            content: '\2912';
+            margin-right: 15px;
+            margin-top: 5px;
+            float: right;
+            font-size: 5vw;
+            transform: scale(2.5, 1.2);
+            color: #2ed4cc;
+        }
+
+        header .myfeed hr {
+            background-color: #2ed4cc;
+            margin-top: 0px;
+            text-align: center;
+            width: 15%;
+            height: 2px;
+            align-content: flex-start;
+            border-radius: 500px;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        body img {
+            width: 100%;
+            height: auto;
+        }
+
+        body h1 {
+            margin-left: 20px;
+            font-size: 7.5vw;
+            color: #333131dc;
+        }
+
+        body .description {
+            margin-left: 20px;
+            color: #535050dc;
+            line-height: 150%;
+            font-size: 4vw;
+
+        }
+
+        body small {
+            color: #b8b3b3;
+        }
+
+        footer {
+            display: flex;
+            border-top: 1.5px solid rgb(214, 209, 218);
+            border-bottom: 1.5px solid rgb(214, 209, 218);
+            flex-direction: row;
+            width: 100%;
+            height: 10vh;
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer .relevance {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            display: flex;
+            width: 33%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        footer .circle {
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            background: rgb(33, 236, 77);
+        }
+
+        footer .text {
+            text-align: center;
+            color: #535050dc;
+            font-size: 3.5vw;
+        }
+
+
+        @media(orientation: landscape) {
+            header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            body img {
+                width: 50%;
+                height: auto;
+                float: left;
+            }
+
+            body h1 {
+                margin-left: 20px;
+                font-size: 50px;
+                color: #333131dc;
+            }
+
+            body .description {
+                margin-left: 20px;
+                color: #535050dc;
+                line-height: 150%;
+                font-size: 20px;
+                padding-bottom: 10vh;
+            }
+
+            #news_article {
+                display: flex;
+
+            }
+
+            body .righthalf {
+                width: 50%;
+                float: right;
+            }
+
+            footer {
+                display: flex;
+                flex-direction: row;
+                width: 1%;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+                overflow: hidden;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react_elem">
+        <!--News element-->
+    </div>
+    <footer>
+        <div class="relevance">
+            <div class="circle"></div>
+            <div class="text">Relevance</div>
+        </div>
+        <div class="relevance">
+            <a href="">
+                <div class="shareicon">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 226 226"
+                        style=" fill:#000000;">
+                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                            <g fill="#3498db">
+                                <path
+                                    d="M169.5,23.54167c-18.11874,0 -32.95833,14.83961 -32.95833,32.95833c0,2.75798 0.93481,5.22373 1.58171,7.78898l-56.45402,28.2408c-6.05767,-7.43166 -14.89811,-12.48812 -25.16935,-12.48812c-18.11874,0 -32.95833,14.83961 -32.95833,32.95833c0,18.11873 14.83959,32.95833 32.95833,32.95833c10.27124,0 19.11168,-5.05646 25.16935,-12.48812l56.45402,28.2408c-0.6469,2.56526 -1.58171,5.031 -1.58171,7.78898c0,18.11873 14.83959,32.95833 32.95833,32.95833c18.11874,0 32.95833,-14.83961 32.95833,-32.95833c0,-18.11873 -14.83959,-32.95833 -32.95833,-32.95833c-10.27124,0 -19.11168,5.05646 -25.16935,12.48812l-56.45402,-28.2408c0.6469,-2.56526 1.58171,-5.031 1.58171,-7.78898c0,-2.75798 -0.93481,-5.22373 -1.58171,-7.78898l56.45402,-28.2408c6.05767,7.43166 14.89811,12.48812 25.16935,12.48812c18.11874,0 32.95833,-14.83961 32.95833,-32.95833c0,-18.11873 -14.83959,-32.95833 -32.95833,-32.95833zM169.5,37.66667c10.48503,0 18.83333,8.34831 18.83333,18.83333c0,10.48502 -8.3483,18.83333 -18.83333,18.83333c-10.48503,0 -18.83333,-8.34831 -18.83333,-18.83333c0,-10.48502 8.3483,-18.83333 18.83333,-18.83333zM56.5,94.16667c10.48503,0 18.83333,8.34831 18.83333,18.83333c0,10.48502 -8.3483,18.83333 -18.83333,18.83333c-10.48503,0 -18.83333,-8.34831 -18.83333,-18.83333c0,-10.48502 8.34831,-18.83333 18.83333,-18.83333zM169.5,150.66667c10.48503,0 18.83333,8.34831 18.83333,18.83333c0,10.48502 -8.3483,18.83333 -18.83333,18.83333c-10.48503,0 -18.83333,-8.34831 -18.83333,-18.83333c0,-10.48502 8.3483,-18.83333 18.83333,-18.83333z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="text">Share</div>
+            </a>
+        </div>
+        <div class="relevance">
+            <a href="">
+                <div class="bookmark">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 226 226"
+                        style=" fill:#000000;">
+                        <g transform="translate(16.498,16.498) scale(0.854,0.854)">
+                            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt"
+                                stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g stroke="#3498db" stroke-width="40" stroke-linejoin="round">
+                                    <path d="M113,177.64165l-64.975,32.4875v-196.00415h129.95v196.00415z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M175.15,16.95h-124.3v188.6083l59.62445,-29.8094l2.52555,-1.2656l2.52555,1.2656l59.62445,29.8094v-188.6083M180.8,11.3v203.4l-67.8,-33.9l-67.8,33.9v-203.4z"
+                                        fill="#3498db"></path>
+                                </g>
+                                <path d="M0,226v-226h226v226z" fill="none" stroke="none" stroke-width="1"
+                                    stroke-linejoin="miter"></path>
+                                <g stroke="none" stroke-width="1" stroke-linejoin="miter">
+                                    <path d="M113,177.64165l-64.975,32.4875v-196.00415h129.95v196.00415z"
+                                        fill="#ffffff"></path>
+                                    <path
+                                        d="M175.15,16.95v188.6083l-59.62445,-29.8094l-2.52555,-1.2656l-2.52555,1.2656l-59.62445,29.8094v-188.6083h124.3M180.8,11.3h-135.6v203.4l67.8,-33.9l67.8,33.9v-203.4z"
+                                        fill="#3498db"></path>
+                                </g>
+                                <path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path>
+                                <path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="text">
+                    Bookmark
+                </div>
+            </a>
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
+
+<script type="text/babel">
+
+
+    //NewsData
+    var data = {
+        "details": [
+            {
+                "src": "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2020/10_oct/13_tue/img_1602605513496_591.jpg",
+                "head": "Hughes India to deliver internet to 5,000 villages using ISRO satellites",
+                "news": "Hughes India will be providing internet services to 5,000 remote villages in 15 states and Union Territories using ISRO's communication satellites. The contract has been awarded under BBNL's BharatNet project to provide affordable high-speed broadband access to 2.5 lakh gram panchayats. The project will also connect villages in areas that lack terrestrial connectivity and are affected by Naxals.",
+                "author": "Hiral Goyal"
+            },
+            {
+                "src": "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2020/10_oct/10_sat/img_1602330923994_730.jpg",
+                "head": "Scientists discover fastest possible speed of sound",
+                "news": "A research collaboration between Queen Mary University of London, the University of Cambridge and Institute for High Pressure Physics in Troitsk has discovered the fastest possible speed of sound. The result, about 36 km per second, is around twice as fast as the speed of sound in diamond. Until now, it wasn't known whether there was an upper speed limit.",
+                "author": "Anmol Sharma"
+            },
+            {
+                "src": "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2020/10_oct/12_mon/img_1602517827085_433.jpg",
+                "head": "Telescopes capture black hole eating a star and causing disruption event",
+                "news": "Scientists have watched a rare blast of light from a star as it was eaten by a black hole over a period of six months. The unusual \"tidal disruption event\" was visible in telescopes across the world. It appeared as a bright flare of energy, the closest of its kind ever recorded, at just 215 million light-years away.",
+                "author": "Anmol Sharma"
+            },
+
+        ],
+
+        "increment": function (num) {
+            num = num + 1;
+            if (num == this.details.length) {
+                num = 0;
+            }
+            return num;
+        },
+        "decrement": function (num) {
+
+            if (num == 0) {
+                num = this.details.length;
+            }
+            num = num - 1;
+            return num;
+        }
+    }
+    //NewsPartAsChild
+    class News extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                <div id="new_article">
+                    <img src={data.details[this.props.index].src} />
+                    <div className="righthalf">
+                        <h1>
+                            {data.details[this.props.index].head}
+                        </h1>
+                        <p className="description">
+                            {data.details[this.props.index].news}<br />
+                            <small>{data.details[this.props.index].author}</small>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+    }
+    //for swipe
+    var xDown = null;
+    var yDown = null;
+    //parent Class with Header
+    //Includes above News
+    class Page extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                "index": 1
+            }
+            this.incr = this.incr.bind(this);
+            this.decr = this.decr.bind(this);
+            this.getTouches = this.getTouches.bind(this);
+            this.handleTouchStart = this.handleTouchStart.bind(this);
+            this.handleTouchMove = this.handleTouchMove.bind(this);
+
+        }
+        //index based state
+        //increment state
+        incr() {
+            this.setState((state) => ({ "index": data.increment(this.state.index) }))
+        }
+        //decrement state
+        decr() {
+            this.setState((state) => ({ "index": data.decrement(this.state.index) }))
+        }
+
+
+        //for swpie
+        getTouches(evt) {
+            return evt.touches ||             // browser API
+                evt.originalEvent.touches; // jQuery
+        }
+
+        //handles touch start
+        handleTouchStart(evt) {
+            const firstTouch = this.getTouches(evt)[0];
+            xDown = firstTouch.clientX;
+            yDown = firstTouch.clientY;
+        };
+
+        //handle touch movement
+        handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            var xUp = evt.touches[0].clientX;
+            var yUp = evt.touches[0].clientY;
+
+            var xDiff = xDown - xUp;
+            var yDiff = yDown - yUp;
+
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+                if (xDiff > 15) {
+                    /* left swipe */
+                    this.incr();
+                } else if (xDiff < -15) {
+                    /* right swipe */
+                    this.decr();
+                }
+            } else {
+                if (yDiff > 0) {
+                    /* up swipe */
+
+                } else {
+                    /* down swipe */
+
+                }
+            }
+            /* reset values */
+            xDown = null;
+            yDown = null;
+        };
+
+        render() {
+            return (
+                <div >
+                    <header>
+                        <div className="discover-link" >
+                            <a onClick={this.decr}>
+                                <p className="left-arrow">&#x2039;</p>
+                                <p className="discover"><strong>Back</strong></p>
+                            </a>
+                        </div>
+                        <div className="myfeed">
+                            <strong>My Feed</strong>
+                            <hr />
+                        </div>
+                        <div className="discover-link">
+                            <a onClick={this.incr}>
+                                <p className="discover"><strong>Next</strong></p>
+                                <p className="left-arrow">&#x203A;</p>
+                            </a>
+                        </div>
+                    </header>
+                    <div onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove}>
+                        <News index={this.state.index} />
+                    </div>
+                </div>
+            )
+        }
+
+    }
+
+
+    ReactDOM.render(<Page />, document.getElementById("react_elem"));
+
+</script>
